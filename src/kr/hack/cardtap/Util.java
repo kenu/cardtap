@@ -17,7 +17,10 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.HTTP;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class Util {
 	
@@ -51,14 +54,22 @@ public class Util {
 					builder.append(line);
 				}
 			} else {
-				Log.e("json", "Failed to join");
+				Log.e("json", "Failed to parse : " + builder );
 			}
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		String string = builder.toString();
-		return string;
+		return builder.toString();
 	}
+	
+	public static boolean validateFormFormat(Context context, EditText email) {
+		if (!Util.isValidEmail(email.getText())) {
+			Toast.makeText(context, "Invalid Email Format", Toast.LENGTH_SHORT).show();
+			return false;
+		}
+		return true;
+	}
+
 }

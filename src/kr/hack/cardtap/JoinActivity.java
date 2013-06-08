@@ -12,7 +12,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,50 +43,39 @@ public class JoinActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				if (validateFormFormat()) {
+				if (Util.validateFormFormat(getApplicationContext(), email)) {
 					execute();
-					if (status) {
-						Intent intent = new Intent(getApplicationContext(),
-								TabHolder.class);
-						startActivity(intent);
-					} else {
-						Toast.makeText(getApplicationContext(), "중복된 아이디가 있습니다.",
-								Toast.LENGTH_LONG).show();
-					}
 				}
 			}
 		});
 
 		// for test
-		email.setText("test");
-		pw.setText("passtext");
+		email.setText("srom.moon@gmail.com");
+		pw.setText("aa");
 
 	}
 
-	protected boolean validateFormFormat() {
-		if (!Util.isValidEmail(email.getText())) {
-			Toast.makeText(this, "이메일 형식이 맞지 않습니다.", Toast.LENGTH_SHORT).show();
-			return false;
-		}
-		return true;
-	}
-	
 	private void execute() {
 		String json = readData();
 		try {
 			JSONObject jsonArray = new JSONObject(json);
 			status = jsonArray.getBoolean("success");
-
-			if (status) {
-				// successful join
-				Log.i("join", "join:" + status);
-			} else {
-				// error
-				Log.i("join", "fail:" + status);
-				finish();
-			}
 		} catch (JSONException e) {
 			e.printStackTrace();
+		}
+
+		if (status) {
+			// successful
+			Toast.makeText(this, "Thank you for Join!!!", Toast.LENGTH_SHORT)
+					.show();
+			Intent intent = new Intent(this, TabHolder.class);
+			startActivity(intent);
+			finish();
+
+		} else {
+			// error
+			Toast.makeText(this, "Duplicated Email Exists!\nTry Other Email, Please",
+					Toast.LENGTH_LONG).show();
 		}
 	}
 

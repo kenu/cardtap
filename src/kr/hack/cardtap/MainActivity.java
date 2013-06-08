@@ -5,8 +5,11 @@ import java.util.List;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -18,8 +21,10 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 	public static String DOMAIN;
 	private static final boolean DEVELOPER_MODE = true;
+
 	EditText email;
 	EditText pw;
+	boolean status;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,18 +35,18 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.main);
 		DOMAIN = getResources().getString(R.string.domain);
 
-		Button button = (Button) findViewById(R.id.button1);
+		Button loginButton = (Button) findViewById(R.id.button1);
 		Button joinButton = (Button) findViewById(R.id.join_button);
 		email = (EditText) findViewById(R.id.id);
 		pw = (EditText) findViewById(R.id.password);
 
-		button.setOnClickListener(new View.OnClickListener() {
+		loginButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if (validateFormFormat()) {
-					Intent intent = new Intent(getApplicationContext(),
-							TabHolder.class);
-					startActivity(intent);
+				Context context = getApplicationContext();
+
+				if (Util.validateFormFormat(context, email)) {
+					execute();
 				}
 			}
 		});
@@ -55,19 +60,30 @@ public class MainActivity extends Activity {
 			}
 
 		});
-		
-        //for test
-        email.setText("a@a.com");
-        pw.setText("aa");
-        
+
+		// for test
+		email.setText("srom.moon@gmail.com");
+		pw.setText("aa");
+
 	}
 
-	protected boolean validateFormFormat() {
-		if (!Util.isValidEmail(email.getText())) {
-			Toast.makeText(this, "이메일 형식이 맞지 않습니다.", Toast.LENGTH_SHORT).show();
-			return false;
+	private void execute() {
+		String json = readData();
+		try {
+			JSONObject jsonArray = new JSONObject(json);
+			status = jsonArray.getBoolean("success");
+		} catch (JSONException e) {
+			e.printStackTrace();
 		}
-		return true;
+
+		if (status) {
+			// successful
+			Intent intent = new Intent(this, TabHolder.class);
+			startActivity(intent);
+		} else {
+			// error
+			Toast.makeText(this, "Fail to Login!!!", Toast.LENGTH_LONG).show();
+		}
 	}
 
 	public String readData() {

@@ -51,7 +51,7 @@ public class JoinActivity extends Activity {
 								TabHolder.class);
 						startActivity(intent);
 					} else {
-						Toast.makeText(getApplicationContext(), "Áßº¹µÈ ¾ÆÀÌµğ°¡ ÀÖ½À´Ï´Ù.",
+						Toast.makeText(getApplicationContext(), "ì¤‘ë³µëœ ì•„ì´ë””ê°€ ìˆìŠµë‹ˆë‹¤.",
 								Toast.LENGTH_LONG).show();
 					}
 				}
@@ -66,7 +66,7 @@ public class JoinActivity extends Activity {
 
 	protected boolean validateFormFormat() {
 		if (!Util.isValidEmail(email.getText())) {
-			Toast.makeText(this, "ÀÌ¸ŞÀÏ Çü½ÄÀÌ ¸ÂÁö ¾Ê½À´Ï´Ù.", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "ì´ë©”ì¼ í˜•ì‹ì´ ë§ì§€ ì•ŠìŠµë‹ˆë‹¤.", Toast.LENGTH_SHORT).show();
 			return false;
 		}
 		return true;

@@ -64,7 +64,7 @@ public class MainActivity extends Activity {
 
 	protected boolean validateFormFormat() {
 		if (!Util.isValidEmail(email.getText())) {
-			Toast.makeText(this, "ÀÌ¸ŞÀÏ Çü½ÄÀÌ ¸ÂÁö ¾Ê½À´Ï´Ù.", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "ì´ë©”ì¼ í˜•ì‹ì´ ë§ì§€ ì•ŠìŠµë‹ˆë‹¤.", Toast.LENGTH_SHORT).show();
 			return false;
 		}
 		return true;

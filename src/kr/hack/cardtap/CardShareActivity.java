@@ -17,6 +17,8 @@ public class CardShareActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
+				// 수신 메일 주소 확인
+				
 				// 메일 보내고,
 				// 발송 결과 표시
 			}

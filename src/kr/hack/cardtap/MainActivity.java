@@ -35,7 +35,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.main);
 		DOMAIN = getResources().getString(R.string.domain);
 
-		Button loginButton = (Button) findViewById(R.id.button1);
+		Button loginButton = (Button) findViewById(R.id.login_button);
 		Button joinButton = (Button) findViewById(R.id.join_button);
 		email = (EditText) findViewById(R.id.id);
 		pw = (EditText) findViewById(R.id.password);
@@ -81,6 +81,7 @@ public class MainActivity extends Activity {
 			// successful
 			Intent intent = new Intent(this, TabHolder.class);
 			startActivity(intent);
+			finish();
 		} else {
 			// error
 			Toast.makeText(this, "Fail to Login!!!", Toast.LENGTH_LONG).show();

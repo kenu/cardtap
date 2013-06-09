@@ -21,5 +21,6 @@
     <string name="name">Name</string>
     <string name="password">password</string>
     <string name="share">Share</string>
+    <string name="_0">0</string>
 
 </resources>

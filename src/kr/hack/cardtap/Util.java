@@ -72,4 +72,15 @@ public class Util {
 		return true;
 	}
 
+	public static String checkNull(String string) {
+		return checkNull(string, "");
+	}
+
+	public static String checkNull(String string, String defaultString) {
+		if (string == null || string.equals("null")) {
+			string = defaultString;
+		}
+		return string;
+	}
+
 }

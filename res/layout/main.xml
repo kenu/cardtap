@@ -17,7 +17,7 @@
         android:layout_marginBottom="19dp"
         android:ems="10"
         android:hint="@string/email"
-        android:inputType="text" />
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/password"
@@ -48,7 +48,7 @@
         android:text="@string/join" />
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/like_bullet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/id"

@@ -72,6 +72,7 @@ public class MainActivity extends Activity {
 		try {
 			JSONObject jsonArray = new JSONObject(json);
 			status = jsonArray.getBoolean("success");
+			Store.sid = jsonArray.getInt("sid");
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

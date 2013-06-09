@@ -32,8 +32,6 @@ public class CardShareActivity extends Activity {
 	
 	boolean status;
 
-	private int sid;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -66,9 +64,8 @@ public class CardShareActivity extends Activity {
 		load(getApplicationContext());
 		
 		// for test
-		to_email.setText("jun318zz@gmail.com");
+		to_email.setText("srom.moon@gmail.com");
 		message.setText("Hello, It's Me!");
-		sid = Store.sid;
 	}
 
 	private boolean load(Context applicationContext) {
@@ -123,7 +120,7 @@ public class CardShareActivity extends Activity {
 	public String readData() {
 		String url = DOMAIN + "/card/share.php";
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("sid", String.valueOf(sid)));
+		params.add(new BasicNameValuePair("sid", String.valueOf(Store.sid)));
 		params.add(new BasicNameValuePair("to_email", to_email.getText()
 				.toString()));
 		params.add(new BasicNameValuePair("message", message.getText()

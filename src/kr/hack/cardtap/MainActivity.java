@@ -62,7 +62,7 @@ public class MainActivity extends Activity {
 		});
 
 		// for test
-		email.setText("srom.moon@gmail.com");
+		email.setText("a@a.com");
 		pw.setText("aa");
 
 	}

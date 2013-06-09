@@ -11,8 +11,6 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 public class MyCardActivity extends Activity {
@@ -39,15 +37,6 @@ public class MyCardActivity extends Activity {
 		web = (TextView) findViewById(R.id.web);
 		twitter = (TextView) findViewById(R.id.twitter);
 		facebook = (TextView) findViewById(R.id.facebook);
-
-		Button editButton = (Button) findViewById(R.id.edit_button);
-
-		editButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				
-			}
-		});
 
 		// load
 		load(getApplicationContext());
